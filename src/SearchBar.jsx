@@ -17,11 +17,12 @@ export default function SearchBar({ userName, setUserName, githubUserData }) {
     }
   }
   useEffect(() => {
-    const timer = setInterval(() => {
-      console.log("Interval running")
+    const timer = setTimeout(() => {
       githubUserData(userName);
     }, 1000)
-    return () =>  clearInterval(timer);
+    return () =>  clearTimeout(timer);
+    // not neccessory to write clean up funtion in this case 
+    // if you are using setInterval then we must need to write cleanup function otherwise many interval will upend
   }, [userName]);
   return (
     <div className="flex border-2 rounded-xl p-1 sm:p-1.5 md:p-2 gap-1.5 sm:gap-3 bg-gray-200 w-[95%] lg:h-15 md:h-13">
